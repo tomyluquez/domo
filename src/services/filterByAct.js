@@ -1,9 +1,22 @@
 const filterByAct = (clientes) => {
-  const clientesWithAct = clientes.filter((cliente) => {
-    return cliente.actividades?.length > 0;
+  const actividadesPendientes = [];
+
+  clientes.forEach((cliente) => {
+    cliente.actividades.forEach((actividad) => {
+      if (actividad.estadoAct === "Pendiente") {
+        actividadesPendientes.push({
+          cliente: cliente,
+          actividad: actividad,
+        });
+      }
+    });
   });
-  console.log(clientesWithAct);
-  return clientesWithAct;
+
+  return actividadesPendientes.sort(
+    (a, b) =>
+      new Date(a.actividad.proximoContacto) -
+      new Date(b.actividad.proximoContacto)
+  );
 };
 
 export default filterByAct;

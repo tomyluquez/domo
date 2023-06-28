@@ -1,5 +1,4 @@
 const hitosInd = (cliente, info) => {
-  console.log(cliente, info);
   const hitosIndividual = cliente.actividades.filter(
     (actividad) =>
       actividad.resultado !== undefined &&

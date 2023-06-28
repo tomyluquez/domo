@@ -9,7 +9,7 @@ import { openModal } from "../../redux/slices/modal";
 
 const Actividades = () => {
   const { clientes } = useSelector((state) => state.clientes);
-  const clientesWithAct = filterByAct(clientes);
+  const actividadesPendientes = filterByAct(clientes);
   const dispatch = useDispatch();
 
   return (
@@ -33,50 +33,43 @@ const Actividades = () => {
               </tr>
             </thead>
             <tbody className="tbody cursor-pointer">
-              {clientesWithAct &&
-                clientesWithAct
-                  .sort(
-                    (a, b) =>
-                      new Date(a.proximoContacto) - new Date(b.proximoContact)
-                  )
-                  .map((cliente) =>
-                    cliente.actividades.map((actividad) => (
-                      <React.Fragment key={cliente._id}>
-                        {actividad.estadoAct === "Pendiente" && (
-                          <tr
-                            onClick={() =>
-                              dispatch(
-                                openModal({
-                                  type: actividad.dato,
-                                  referencia: "estado",
-                                  id: cliente._id,
-                                  idAct: actividad._id,
-                                })
-                              )
-                            }
+              {actividadesPendientes &&
+                actividadesPendientes.map((actividad) => (
+                  <React.Fragment key={actividad.cliente._id}>
+                    {actividad.actividad.estadoAct === "Pendiente" && (
+                      <tr
+                        onClick={() =>
+                          dispatch(
+                            openModal({
+                              type: actividad.actividad.dato,
+                              referencia: "estado",
+                              id: actividad.cliente._id,
+                              idAct: actividad.actividad._id,
+                            })
+                          )
+                        }
+                      >
+                        <td className="td">
+                          <span
+                            className={`clientes-ind-value bg-${
+                              stateColors[actividad.actividad.estadoAct]
+                            } text-white p-2 border-round-xl w-full block text-center`}
                           >
-                            <td className="td">
-                              <span
-                                className={`clientes-ind-value bg-${
-                                  stateColors[actividad.estadoAct]
-                                } text-white p-2 border-round-xl w-full block text-center`}
-                              >
-                                {actividad.estadoAct}
-                              </span>
-                            </td>
-                            <td className="td">{cliente.nombreLocal}</td>
-                            <td className="td">{cliente.nombreCrm}</td>
-                            <td className="td">{cliente.telContacto}</td>
-                            <td className="td">
-                              {formatDate(actividad.proximoContacto)}
-                            </td>
-                            <td className="td">{actividad.dato}</td>
-                            <td className="td">{actividad.actividad}</td>
-                          </tr>
-                        )}
-                      </React.Fragment>
-                    ))
-                  )}
+                            {actividad.actividad.estadoAct}
+                          </span>
+                        </td>
+                        <td className="td">{actividad.cliente.nombreLocal}</td>
+                        <td className="td">{actividad.cliente.nombreCrm}</td>
+                        <td className="td">{actividad.cliente.telContacto}</td>
+                        <td className="td">
+                          {formatDate(actividad.actividad.proximoContacto)}
+                        </td>
+                        <td className="td">{actividad.actividad.dato}</td>
+                        <td className="td">{actividad.actividad.actividad}</td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                ))}
             </tbody>
           </table>
         </div>
