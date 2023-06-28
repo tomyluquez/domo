@@ -1,0 +1,125 @@
+:root{
+    --bodyBack: #EFF3F8;
+    --check: #BDD819
+}
+
+*{
+    font-family: 'open sans';
+}
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+
+body{
+    background-color: var(--bodyBack);
+}
+
+.logo{
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    width: 80px;
+}
+
+.panelMenu{
+    transition: all 0.3s ease-in-out;
+}
+@media screen and (min-width:700px) {
+    .panelMenu:hover{
+        width: 300px !important;
+    }
+}
+
+.icons{
+    transition: all 0.3s ease-in-out;
+}
+
+.icons:hover{
+    color: var(--check);
+    transform: scale(1.1);
+}
+
+.containerMenues{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 50px;
+    height: 3rem;
+}
+
+.containerOptions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.iconSlider{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.p-sidebar-content{
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+.p-dialog-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formAdd{
+    overflow: inherit;
+}
+
+.error{
+    height: 20px;
+}
+
+.cardClient{
+    transition: all 0.3s ease-in-out;
+}
+
+.cardClient:hover{
+    transform: scale(1.05);
+}
+
+.p-card .p-card-body{
+    padding: 0 5px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.p-card-content{
+    padding: 0 !important;
+}
+
+/* .p-inputgroup{
+    width: 180px;
+} */
+
+/* .inputsForm{
+    width: 20% !important; 
+} */
+
+.p-inputgroup_{
+    width: 180px;
+}
+
+.inputsForm_{
+    width: 20% !important; 
+} 
+
+.buttonState{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    max-width: 20%;
+}
+
+
