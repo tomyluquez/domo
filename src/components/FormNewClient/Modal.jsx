@@ -3,7 +3,7 @@ import { useState } from "react";
 import FormAddClient from "./FormAddClient";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/slices/modal";
-import ModalDatos from "../ClientInd/ModaDatos/ModalDAtos";
+import ModalDatos from "../ClientInd/ModaDatos/ModalDatos";
 import ModalContacto from "../ClientInd/ModaDatos/ModalContacto";
 import useMutatioAct from "../../Hooks/useMutatioAct";
 import { Button } from "primereact/button";
